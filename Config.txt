@@ -1,0 +1,22 @@
+enable
+configure terminal 
+hostname R10
+interface Gig0/0
+ip address 192.168.0.1 255.255.255.0
+no shutdown interface Gig1/0
+ip address 10.0.0.1 255.0.0.0
+no shutdown 
+exit
+do show ip interface brief 
+ip dhcp excluded-address 10.0.0.1
+ip dhcp excluded-address 192.168.0.1
+ip dhcp pool 10.0.0.1
+network 10.0.0.0 255.0.0.0
+default-router 10.0.0.1
+dns-server 8.8.8.8
+ip dhcp pool 192.168.0.1
+network 192.168.0.0 255.255.255.0
+default-router 192.168.0.1
+dns-server 8.8.8.8
+end
+copy running-config startup-config
