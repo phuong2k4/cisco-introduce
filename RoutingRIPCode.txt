@@ -1,0 +1,15 @@
+enable
+conf t
+hostname "name"
+interface "port-route"
+ip address "ip-number" "subnet mask"
+no shutdown
+exit 
+route rip
+version 2
+network "port ip-number"
+no auto-summary
+exit
+exit
+show ip route
+write
